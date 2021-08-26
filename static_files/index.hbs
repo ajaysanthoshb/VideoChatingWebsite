@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Video Chating</title>
+    <link rel="stylesheet" href="./style.css">
+    <script src="https://unpkg.com/peerjs@1.3.1/dist/peerjs.min.js" defer></script>
+    <script src = "/socket.io/socket.io.js"></script>
+    <script src="./script.js" defer></script>
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <style>
+        #videogrid{
+            width:60%;
+            height: 78vh;
+            overflow-y:auto;
+            display: grid;
+            grid-template-columns: repeat(2,45%);
+            grid-column-gap: 7%;
+            grid-row-gap: 5%;
+            grid-auto-rows:45%;
+            background-color: hsl(0, 0%, 70%);
+            border: 2px groove black;
+            {{!-- border : 4px groove purple; --}}
+        }
+
+        #videogrid:hover{
+            background-color: hsl(0, 0%, 80%);
+        }
+
+        video{
+            transform: scaleX(-1);
+            width:100%;
+            height:100%;
+            object-fit: cover;
+        }
+
+    </style>
+    
+</head>
+<body>
+    <h5 style="display: none;">{{counting}}</h5>
+    <div class="container2">
+        <header style="background-color: hsl(220, 40%, 60%);height:10vh;width:60%;border: 2px groove black;" id="video_header">
+            <h1 style="position: relative; left : 40%; top : -5%; font-size : 25px;">VIDEO PART</h1>
+        </header>
+        <div class = "brand" style = "width:40%;border: 2px groove black;">
+            <img src="./images/icon.png" alt="" width="50px" height="50px" style="margin-left: 5px;">
+            <h1 class = "thunder">⚡</h1>
+            <h1 id = "heading">MESSENGER</h1>
+        </div>
+    </div>
+    <div class="container">
+        <div id="videogrid">
+        </div>
+        <div class="chatting">
+
+            <div class = "msg_area">
+
+            </div>
+
+            <div>
+                <textarea id="textarea" cols="20" rows="2" placeholder="Write a msg"></textarea>
+            </div>
+        </div>
+    </div>
+
+    <div class = "bar">
+        <button onclick="openSidebar()" id="bottom_left">Show</button>
+        <img src="./images/mute_on.png" alt="" id="ele1" width="40px" height="40px">
+        <img src="./images/video_off.png" alt="" id="ele2" width="40px" height="40px">
+        <img src="./images/chat_on.png" alt="" id="ele3" width="40px" height="40px">
+
+    </div>
+    {{!-- <button onclick="openSidebar()">Show</button> --}}
+    
+    <div id="side-bar" data-state="close">
+       <div id="side_bar_div">
+           <p id="side_text">SIDE BAR</p>
+           <i class="material-icons" id="icon1" onclick="closeSidebar()">close</i>
+       </div>
+       <div id="persons">
+        {{!-- <h2>Person1 : <i class="material-icons" id="user1">mic</i></h2>
+        <h2>Person2 : <i class="material-icons" id="user2">mic_off</i></h2>
+        <h2>Person3 : <i class="material-icons" id="user3">mic</i></h2>
+        <h2>Person4 : <i class="material-icons" id="user4">mic_off</i></h2> --}}
+       </div>
+    </div>
+</body>
+</html>
