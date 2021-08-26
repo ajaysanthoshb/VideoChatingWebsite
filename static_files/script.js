@@ -142,13 +142,23 @@ navigator.mediaDevices.getUserMedia({
 
 socket.on('broadcast_status',(p,u,r)=>{
     if(r == ROOM_ID)
-    {
+    {   
         console.log("person = ",p)
         console.log("user = ",u)
         socket.emit('remaining_status',our_user_id,person,p,mute_status)
         addstatus(p,u)
     }
 })
+
+function addleftpopup(p){
+    let x = document.getElementsByTagName('h4').length
+    for(let i = 0;i < x;i++){
+        document.getElementsByTagName('h4')[i].remove()
+    }
+    let y = document.createElement('h4')
+    y.innerText = `${p} left the meeting`
+    document.getElementsByTagName('body')[0].append(y)
+}
 
 socket.on('receive_status',(u,p1,p2,cut,r)=>{
     if(r == ROOM_ID)
@@ -260,7 +270,7 @@ function updateStatus(p,mut){
 socket.on('user-disconnected',(p,userID,r) =>{
     if(r == ROOM_ID)
     {
-        alert(`${p} left the meeting`)
+        addleftpopup(p)
         var ele = document.getElementById(userID)
         if(ele){
             ele.remove()
