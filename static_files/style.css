@@ -128,10 +128,14 @@ video{
     width: 40%;
     max-height: 100vh;
     position: relative;
-    background-color: hsl(0, 0%, 90%);
+    background-color: hsl(0, 0%, 70%);
     /* animation: color_changing 5s infinite; */
     border: 2px groove black;
-    transition: all 0.7s ease;
+    /* transition: all 0.7s ease; */
+}
+
+.chatting:hover{
+    background-color: hsl(0, 0%, 75%);
 }
 
 
@@ -176,18 +180,17 @@ video{
 }
 
 .msg_area:hover{
-    background-color: hsl(0, 0%, 80%);
+    background-color: hsl(0, 0%, 75%);
 }
 
 textarea{
-    width:95%;
-    padding : 5px;
     border-radius: 30px;
-    font-size: 17px;
-    height: 7vh;
+    width: 100%;
+    min-height: 3rem;
     cursor: grab;
-    margin-top: 2%;
-    background: #ffe499;
+    padding-left: 1rem;
+    padding-right: 4rem;
+    font-size: 17px;
     transition:all 0.75s ease ;
 }
 textarea:hover{
@@ -348,4 +351,18 @@ img{
 #heading{
     position: relative;
     left:2px;
+}
+
+#send_button{
+  position: absolute;
+  right: 0;
+  top: 0;
+  width: 3rem;
+  height: 3rem;
+  background-color: transparent ;
+  border:none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor:pointer;
 }

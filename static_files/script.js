@@ -73,6 +73,7 @@ var color_array = ['hsl(180,40%,40%)','hsl(180,50%,55%)','hsl(220,60%,70%)','hsl
 var str = `background:${color_array[color_index]}`
 let textarea = document.getElementById('textarea')
 let msg_area = document.querySelector('.msg_area')
+let send_button = document.querySelector('#send_button')
 
 
 socket.on('send_room_id',(roomID)=>{
@@ -387,6 +388,10 @@ textarea.addEventListener('keyup',(e)=>{
     }
 })
 
+send_button.addEventListener('click',()=>{
+    let cleanText = textarea.value.replace(/<\/?[^>]+(>|$)/g, "");
+    sendmsg(cleanText)
+})
 //Receiving msgs
 
 socket.on('broadcast_msg',(mesage,other_room_id,r)=>{
