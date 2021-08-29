@@ -90,7 +90,11 @@ socket.on('send_room_id',(roomID)=>{
 
 
 navigator.mediaDevices.getUserMedia({
-    video:true,audio:true
+    video:true,audio:{
+        echoCancellation : true,
+        noiseSuppression : true,
+        sampleRate: 44100
+    }
 }).then((stream) =>{
     myStream = stream
     console.log("Getuser media function")
