@@ -65,8 +65,8 @@ var id_storer;
 //myself muting to avoid echo but audible to others
 my_video.muted  = true
 
-const peer = new Peer(undefined ,{host:'/',port:3001})
-// const peer = new Peer(undefined,{host:'peerjs-server.herokuapp.com', secure:true, port:443})
+// const peer = new Peer(undefined ,{host:'/',port:3001})
+const peer = new Peer(undefined,{host:'peerjs-server.herokuapp.com', secure:true, port:443})
 
 var previous_name,color_index=-1,previous_msg_incomer_name;
 var color_array = ['hsl(180,40%,40%)','hsl(180,50%,55%)','hsl(220,60%,70%)','hsl(220,30%,50%)','hsl(200,70%,60%)']
